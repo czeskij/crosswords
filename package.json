@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-svelte",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:czeskij/portfolio-svelte.git",
+  "author": "Jakub Rajski",
+  "license": "MIT",
+  "private": true
+}

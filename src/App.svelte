@@ -1,6 +1,8 @@
 <script>
 	import Header from './Header.svelte';
 	import Settings from './Settings.svelte';
+	import { crossword, app } from './stores.js';
+
 	const name = 'crosswords';
 </script>
 
@@ -10,12 +12,15 @@
 		display: flex;
 		flex-flow: column;
 		align-items: flex-start;
-		justify-content: flex-start;
+		justify-content: center;
 		height: 100%;
 	}
 </style>
 
 <div>
 	<Header {name} />
-	<Settings />
+	{#if $app.editMode && $crossword.dimensions}
+		<Settings />
+	{/if}
+
 </div>

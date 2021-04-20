@@ -1,5 +1,12 @@
 <script>
+    import { crossword, app } from './stores.js';
+
     export let name;
+
+    function createNewCrossword() {
+        app.update(() => ({ editMode: true }));
+        crossword.update(() => ({ dimensions: {} }));
+    }
 </script>
 
 <style>
@@ -11,7 +18,8 @@
         align-items: center;
         justify-content: center;
         margin-bottom: 0.6rem;
-        height: 100px;
+        max-height: 100%;
+        min-height: 100px;
     }
 
     button {
@@ -33,7 +41,6 @@
 
 <header>
     <h1>{name}!</h1>
-    <button>new</button>
+    <button on:click={createNewCrossword}>new</button>
     <button>load</button>
-    <button>lucky</button>
 </header>

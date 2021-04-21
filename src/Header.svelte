@@ -5,7 +5,10 @@
 
     function createNewCrossword() {
         app.update(() => ({ editMode: true }));
-        crossword.update(() => ({ dimensions: {} }));
+        crossword.update(prev => ({ 
+            ...prev,
+            dimensions: {}
+        }));
     }
 </script>
 
@@ -27,6 +30,7 @@
         border: none;
         border-radius: 5px;
         display: flex;
+        margin: 0;
         margin-right: 5px;
         font-weight: 700;
         font-size: 80%;

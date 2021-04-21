@@ -1,4 +1,5 @@
 <script>
+	import Crossword from './Crossword.svelte';
 	import Header from './Header.svelte';
 	import Settings from './Settings.svelte';
 	import { crossword, app } from './stores.js';
@@ -19,8 +20,11 @@
 
 <div>
 	<Header {name} />
-	{#if $app.editMode && $crossword.dimensions}
+	{#if $app.editMode && !$crossword.schema}
 		<Settings />
+	{/if}
+	{#if $app.editMode && $crossword.schema}
+		<Crossword />
 	{/if}
 
 </div>

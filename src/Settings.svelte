@@ -4,16 +4,34 @@
     let rows = 0;
     let columns = 0;
 
+    const initialFieldValue = {
+        isBlack: false,
+        isPassword: false
+    }
+
     function cancelCrosswordCreation() {
         crossword.set({});
         app.update(() => ({ editMode: false }));
     }
 
     function continueCrosswordCreation() {
-        crossword.set({
-            dimensions: { rows, columns },
-            structure: []
-        })
+        let schema = {};
+
+        for (let i = 0; i < rows; ++i) {
+            schema[i] = {};
+            for (let j = 0; j < columns; ++j) {
+                schema[i][j] = {
+                    id: `${i}x${j}`,
+                    ...initialFieldValue
+                };
+            }
+        }
+
+        crossword.update(prev => ({
+            ...prev,
+            dimensions: { rows, columns }, 
+            schema
+        }));
     }
 </script>
 

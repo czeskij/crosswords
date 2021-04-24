@@ -6,12 +6,14 @@
 
     const initialFieldValue = {
         isBlack: false,
-        isPassword: false
+        isPassword: false,
+        isSelected: false,
+        number: undefined
     }
 
     function cancelCrosswordCreation() {
         crossword.set({});
-        app.update(() => ({ editMode: false }));
+        app.update(prev => ({ ...prev, editMode: false }));
     }
 
     function continueCrosswordCreation() {
@@ -20,10 +22,7 @@
         for (let i = 0; i < rows; ++i) {
             schema[i] = {};
             for (let j = 0; j < columns; ++j) {
-                schema[i][j] = {
-                    id: `${i}x${j}`,
-                    ...initialFieldValue
-                };
+                schema[i][j] = {...initialFieldValue};
             }
         }
 

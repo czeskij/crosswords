@@ -1,12 +1,22 @@
 <script>
-    export let number = undefined;
-    export let isPassword = false;
-    export let isBlack = false;
+    import { createEventDispatcher } from 'svelte';
 
-    let style = isBlack
-        ? 'background-color: black;'
-        : 'background-color: white;';
+    export let number;
+    export let isPassword;
+    export let isBlack;
+    export let isSelected;
+    export let row;
+    export let column;
 
+    const dispatch = createEventDispatcher();
+
+    $: style = `
+        background-color: ${isBlack ? 'black' : 'white'};
+        z-index: ${isSelected ? '3001' : '3000'};
+        box-shadow: ${isSelected ? '0 0 0px 3px red;' : 'none'};
+        border-right: ${isSelected ? '1px solid black' : '1px solid transparent'};
+        border-bottom: ${isSelected ? '1px solid black' : '1px solid transparent'};
+    `;
 </script>
 
 <style>
@@ -18,6 +28,7 @@
         display: flex;
         flex-flow: column;
         justify-content: space-between;
+        transition: .1s;
     }
 
     div.field div.number {
@@ -36,7 +47,7 @@
     }
 </style>
 
-<div {style} class="field">
+<div {style} class="field" on:click={() => dispatch('select', {row, column})}>
     {#if !isBlack}
         {#if number}
             <div class="number">{number}</div>

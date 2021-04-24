@@ -1,11 +1,27 @@
 <script>
     import { crossword } from './stores.js';
-    import { onMount } from 'svelte';
     import Field from './Field.svelte';
 
-    onMount(() => {
-        console.log($crossword);
-    });    
+    function toggleSelect(event) {
+        const { row, column } = event.detail;
+        const isSomeSelected = Object.keys($crossword.schema)
+
+        if (Object.keys(cross))
+
+        crossword.update(prev => ({
+            ...prev,
+            schema: {
+                ...prev.schema,
+                [row]: {
+                    ...prev.schema[row],
+                    [column]: {
+                        ...prev.schema[row][column],
+                        isSelected: !prev.schema[row][column].isSelected
+                    }
+                }
+            }
+        }));
+    }
 </script>
 
 <style>
@@ -36,10 +52,11 @@
             {#each Object.keys($crossword.schema) as rowKey}
                 <div class="field-group">
                     {#each Object.keys($crossword.schema[rowKey]) as columnKey}
-                        <Field 
-                            isBlack={$crossword.schema[rowKey][columnKey].isBlack}
-                            isPassword={$crossword.schema[rowKey][columnKey].isPassword}
-                            number={$crossword.schema[rowKey][columnKey].number} 
+                        <Field
+                            {...$crossword.schema[rowKey][columnKey]}
+                            row={rowKey}
+                            column={columnKey}
+                            on:select={toggleSelect}
                         />
                     {/each}
                 </div>

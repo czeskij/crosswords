@@ -1,14 +1,17 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import { selectedFields } from './stores.js';
+    import { isFieldSelected } from './util.js';
 
     export let number;
     export let isPassword;
     export let isBlack;
-    export let isSelected;
     export let row;
     export let column;
 
     const dispatch = createEventDispatcher();
+
+    $: isSelected = isFieldSelected($selectedFields, [row, column]);
 
     $: style = `
         background-color: ${isBlack ? 'black' : 'white'};
@@ -47,7 +50,7 @@
     }
 </style>
 
-<div {style} class="field" on:click={() => dispatch('select', {row, column})}>
+<div {style} class="field" on:click={() => dispatch('select', [row, column])}>
     {#if !isBlack}
         {#if number}
             <div class="number">{number}</div>

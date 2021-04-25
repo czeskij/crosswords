@@ -5,3 +5,5 @@ export const app = writable({
 });
 
 export const crossword = writable({});
+
+export const selectedFields = writable([]);

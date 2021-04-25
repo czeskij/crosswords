@@ -7,7 +7,6 @@
     const initialFieldValue = {
         isBlack: false,
         isPassword: false,
-        isSelected: false,
         number: undefined
     }
 

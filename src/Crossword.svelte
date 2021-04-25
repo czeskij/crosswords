@@ -1,27 +1,23 @@
 <script>
-    import { crossword } from './stores.js';
+    import { crossword, selectedFields } from './stores.js';
     import Field from './Field.svelte';
+    import { isFieldSelected, areFieldsEqual } from './util.js';
 
     function toggleSelect(event) {
-        const { row, column } = event.detail;
-        const isSomeSelected = Object.keys($crossword.schema)
+        const changedField = event.detail;
 
-        if (Object.keys(cross))
-
-        crossword.update(prev => ({
-            ...prev,
-            schema: {
-                ...prev.schema,
-                [row]: {
-                    ...prev.schema[row],
-                    [column]: {
-                        ...prev.schema[row][column],
-                        isSelected: !prev.schema[row][column].isSelected
-                    }
-                }
-            }
-        }));
+        if (isFieldSelected($selectedFields, changedField)) {
+            selectedFields.update(prev => prev.filter(field => !areFieldsEqual(field, changedField)));
+        } else {
+            selectedFields.update(prev => ([
+                ...prev, changedField
+            ]));
+        }
+        
+        console.log($selectedFields);
     }
+
+    
 </script>
 
 <style>

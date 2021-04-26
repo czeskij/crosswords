@@ -61,6 +61,10 @@
             }));
         });
     }
+
+    function deselectAll() {
+        selectedFields.set([]);
+    }
 </script>
 
 <style>
@@ -85,6 +89,7 @@
 
 <div class="field-settings">
     {#if $selectedFields.length >= 1}
+        <button on:click={deselectAll}>Deselect</button>
         <div class="setting">
             <label for="is-black">Is field black?</label>
             <input 

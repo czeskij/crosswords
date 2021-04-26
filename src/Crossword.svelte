@@ -13,8 +13,6 @@
                 ...prev, changedField
             ]));
         }
-        
-        console.log($selectedFields);
     }
 
     
@@ -29,6 +27,7 @@
         height: 100%;
         width: 100%;
         border: 1px dotted black;
+        box-sizing: border-box;
     }
     div.crossword-editor div.crossword {
         display: flex;

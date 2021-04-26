@@ -36,15 +36,16 @@
 
     div.field div.number {
         align-self: flex-start;
-        font-size: 3px;
-        padding: 1px;
+        font-size: 12px;
+        padding: 2px;
     }
 
     div.field div.is-password {
         align-self: flex-end;
-        width: 2px;
-        height: 2px;
-        padding: 1px;
+        width: 6px;
+        height: 6px;
+        padding: 2px;
+        margin: 2px;
         border-radius: 50%;
         background-color: black;
     }

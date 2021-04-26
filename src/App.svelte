@@ -1,8 +1,9 @@
 <script>
 	import Crossword from './Crossword.svelte';
+import FieldSettings from './FieldSettings.svelte';
 	import Header from './Header.svelte';
 	import InitialSettings from './InitialSettings.svelte';
-	import { crossword, app } from './stores.js';
+	import { crossword, app, selectedFields } from './stores.js';
 
 	const name = 'crosswords';
 
@@ -27,6 +28,7 @@
 	{/if}
 	{#if $app.editMode && $crossword.schema}
 		<Crossword />
+		<FieldSettings />
 	{/if}
 
 </div>

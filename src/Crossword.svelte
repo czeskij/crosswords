@@ -26,8 +26,9 @@
         justify-content: center;
         height: 100%;
         width: 100%;
-        border: 1px dotted black;
+        border: 1px dashed black;
         box-sizing: border-box;
+        margin-bottom: 0.6rem;
     }
     div.crossword-editor div.crossword {
         display: flex;

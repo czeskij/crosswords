@@ -75,7 +75,7 @@
         justify-content: space-evenly;
         min-height: 100px;
         width: 100%;
-        border: 1px dotted black;
+        border: 1px dashed black;
         box-sizing: border-box;
     }
 
@@ -88,8 +88,23 @@
 </style>
 
 <div class="field-settings">
+    {#if $selectedFields.length === 1}
+        <div class="setting">
+            <label for="field-number">Number</label>
+            <input 
+            type="number" 
+            name="field-number"
+            bind:value={$crossword.schema[$selectedFields[0][0]][$selectedFields[0][1]].number} />
+        </div>
+        <div class="setting">
+            <label for="is-password">Is for password?</label>
+            <input 
+            type="checkbox" 
+            name="is-password"
+            bind:checked={$crossword.schema[$selectedFields[0][0]][$selectedFields[0][1]].isPassword} />
+        </div>
+    {/if}
     {#if $selectedFields.length >= 1}
-        <button on:click={deselectAll}>Deselect</button>
         <div class="setting">
             <label for="is-black">Is field black?</label>
             <input 
@@ -99,21 +114,6 @@
                 bind:this={isBlackCheckbox}
                 value={areFieldsBlack} />
         </div>
-    {/if}
-    {#if $selectedFields.length === 1}
-        <div class="setting">
-            <label for="field-number">Number</label>
-            <input 
-                type="number" 
-                name="field-number"
-                bind:value={$crossword.schema[$selectedFields[0][0]][$selectedFields[0][1]].number} />
-        </div>
-        <div class="setting">
-            <label for="is-password">Is for password?</label>
-            <input 
-                type="checkbox" 
-                name="is-password"
-                bind:value={$crossword.schema[$selectedFields[0][0]][$selectedFields[0][1]].isPassword} />
-        </div>
+        <button on:click={deselectAll}>Deselect</button>
     {/if}
 </div>

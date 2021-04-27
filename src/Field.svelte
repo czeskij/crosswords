@@ -19,6 +19,7 @@
         box-shadow: ${isSelected ? '0 0 0px 3px red;' : 'none'};
         border-right: ${isSelected ? '1px solid black' : '1px solid transparent'};
         border-bottom: ${isSelected ? '1px solid black' : '1px solid transparent'};
+        justify-content: ${isPassword && !number ? 'flex-end' : 'space-between'};
     `;
 </script>
 
@@ -30,7 +31,6 @@
         border-top: 1px solid black;
         display: flex;
         flex-flow: column;
-        justify-content: space-between;
         transition: .1s;
     }
 
@@ -44,6 +44,10 @@
         align-self: flex-end;
         width: 6px;
         height: 6px;
+        min-width: 6px;
+        max-width: 6px;
+        min-height: 6px;
+        max-height: 6px;
         padding: 2px;
         margin: 2px;
         border-radius: 50%;

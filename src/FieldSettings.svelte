@@ -65,6 +65,10 @@
     function deselectAll() {
         selectedFields.set([]);
     }
+
+    function logCrosswordToConsole() {
+        console.log($crossword);
+    }
 </script>
 
 <style>
@@ -116,4 +120,5 @@
         </div>
         <button on:click={deselectAll}>Deselect</button>
     {/if}
+    <button on:click={logCrosswordToConsole}>Log crossword to console</button>
 </div>

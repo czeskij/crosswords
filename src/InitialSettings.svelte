@@ -1,8 +1,10 @@
 <script>
     import { app, crossword } from './stores.js';
 
-    let rows = 0;
-    let columns = 0;
+    let rows;
+    let columns;
+
+    $: buttonDisabled = !rows || !columns;
 
     const initialFieldValue = {
         isBlack: false,
@@ -61,6 +63,6 @@
     <input type="number" name="rows" bind:value={rows} />
     <label for="columns">Columns</label>
     <input type="number" name="columns" bind:value={columns} />
-    <button on:click={continueCrosswordCreation}>Continue with {rows}x{columns} field</button>
+    <button disabled={buttonDisabled} on:click={continueCrosswordCreation}>Continue</button>
     <button on:click={cancelCrosswordCreation}>Cancel</button>
 </div>

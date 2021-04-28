@@ -1,12 +1,12 @@
 <script>
-    import { crossword, app } from './stores.js';
+    import { crossword, app, selectedFields } from './stores.js';
 
     export let name;
 
     function createNewCrossword() {
         app.update(() => ({ editMode: true }));
-        crossword.update(prev => ({ 
-            ...prev,
+        selectedFields.update(() => ([]));
+        crossword.update(() => ({
             dimensions: {}
         }));
     }
@@ -20,7 +20,6 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-        margin-bottom: 0.6rem;
         max-height: 100%;
         min-height: 100px;
     }

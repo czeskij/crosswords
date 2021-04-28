@@ -44,6 +44,7 @@
         height: 100%;
         color: white;
         background-color: black;
+        border: 1px dashed white;
         font-weight: 700;
         width: 100%;
     }

@@ -80,6 +80,7 @@
         min-height: 100px;
         width: 100%;
         border: 1px dashed black;
+        color: white;
         box-sizing: border-box;
     }
 

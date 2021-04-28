@@ -19,7 +19,10 @@
         box-shadow: ${isSelected ? '0 0 0px 3px red;' : 'none'};
         border-right: ${isSelected ? '1px solid black' : '1px solid transparent'};
         border-bottom: ${isSelected ? '1px solid black' : '1px solid transparent'};
-        justify-content: ${isPassword && !number ? 'flex-end' : 'space-between'};
+    `;
+
+    $: passwordDotStyle = `
+        top: ${number ? '10px' : '25px'};
     `;
 </script>
 
@@ -29,26 +32,25 @@
         width: 40px;
         border-left: 1px solid black;
         border-top: 1px solid black;
-        display: flex;
-        flex-flow: column;
         transition: .1s;
     }
 
     div.field div.number {
-        align-self: flex-start;
+        position: relative;
+        top: 2px;
+        left: 2px;
         font-size: 12px;
-        padding: 2px;
     }
 
     div.field div.is-password {
-        align-self: flex-end;
-        width: 6px;
-        height: 6px;
-        min-width: 6px;
-        max-width: 6px;
-        min-height: 6px;
-        max-height: 6px;
-        padding: 2px;
+        position: relative;
+        left: 25px;
+        width: 10px;
+        height: 10px;
+        min-width: 10px;
+        max-width: 10px;
+        min-height: 10px;
+        max-height: 10px;
         margin: 2px;
         border-radius: 50%;
         background-color: black;
@@ -61,7 +63,7 @@
             <div class="number">{number}</div>
         {/if}
         {#if isPassword}
-            <div class="is-password"></div>
+            <div style={passwordDotStyle} class="is-password"></div>
         {/if}
     {/if}
 </div>

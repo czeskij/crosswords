@@ -12,7 +12,7 @@ import FieldSettings from './FieldSettings.svelte';
 
 <style>
 	div {
-		background-color: white;
+		background-color: black;
 		display: flex;
 		flex-flow: column;
 		align-items: flex-start;

@@ -26,6 +26,7 @@
         justify-content: center;
         height: 100%;
         width: 100%;
+        background-color: white;
         border: 1px dashed black;
         box-sizing: border-box;
         margin-bottom: 0.6rem;

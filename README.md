@@ -4,3 +4,5 @@ Simple crossword generator. You can create a crossword of your concept, then sav
 ![image](https://user-images.githubusercontent.com/3092954/219967501-cca997fc-0dbd-4b54-8962-5bd49c74822f.png)
 
 It's hosted [here on Netlify](https://crosswords-fkm.netlify.app/), if you just want to try it.
+
+If you want to add/change something - hit me up with a PR or write an issue. Have fun!
